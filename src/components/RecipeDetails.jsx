@@ -1,11 +1,16 @@
 import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { setShowRecipe } from "../redux/silces/showRecipeReducer";
+import { setFavorites } from "../redux/silces/favoritesReducer";
 
 const RecipeDetails = () => {
   const id = useSelector((state) => state.showRecipe.showRecipe.id);
   const recipes = useSelector((state) => state.recipes.recipes);
   const [recipeSelected, setRecipeSelected] = useState(null);
   const [loadingIs, setLoadingIs] = useState(true);
+  const favorites = useSelector((state) => state.favorites.favorites);
+  const [isFavRec, setIsFavRec] = useState(false);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const selectedRec = Object.values(recipes)
@@ -18,9 +23,36 @@ const RecipeDetails = () => {
     } else {
       setLoadingIs(false);
     }
-  }, [id, recipeSelected, recipes]);
 
-  console.log(recipeSelected);
+    const itsFav = favorites.favRec.filter((fav) => id === fav);
+    setIsFavRec(itsFav.length > 0 ? true : false);
+  }, []);
+
+  const handleFavorite = (favRec) => {
+    if (isFavRec === true) {
+      setIsFavRec(false);
+      const newFavList = {
+        favRec: favorites.favRec.filter((fav) => fav !== favRec.recipe_id),
+      };
+
+      dispatch(setFavorites(newFavList));
+      sessionStorage.setItem("favorites", JSON.stringify(newFavList));
+    } else {
+      setIsFavRec(true);
+
+      const newFavList = {
+        favRec: [...favorites.favRec, favRec.recipe_id],
+      };
+
+      dispatch(setFavorites(newFavList));
+      sessionStorage.setItem("favorites", JSON.stringify(newFavList));
+    }
+  };
+
+  const handleRecipeClose = () => {
+    const shoewRecipe = { itsShow: false, id: null };
+    dispatch(setShowRecipe(shoewRecipe));
+  };
 
   return (
     <section className="container-fluid recDetCon">
@@ -33,8 +65,22 @@ const RecipeDetails = () => {
         ) : (
           <div
             className="col-11 col-md-6 recipeDetails rounded shadow p-2 d-flex flex-column justify-content-center align-items-center"
-            style={{ height: "fit-content" }}
+            style={{ height: "fit-content", position: "relative" }}
           >
+            <div
+              className="text-green fs-5"
+              style={{
+                position: "absolute",
+                top: "-7%",
+                right: "-3%",
+                fontWeight: "700",
+              }}
+            >
+              <i
+                className="bi bi-x-circle-fill"
+                onClick={() => handleRecipeClose()}
+              ></i>
+            </div>
             {recipeSelected ? (
               <>
                 <h3
@@ -43,11 +89,16 @@ const RecipeDetails = () => {
                 >
                   {recipeSelected.label}
                 </h3>
-                <div className="row bg-lightGreen p-2 rounded my-4 mx-1">
+                <div className="col-12 d-flex flex-column bg-lightGreen p-2 rounded my-4 mx-1">
                   <div
-                    className="col-12 d-flex align-items-center justify-content-between"
+                    className="col-12 d-flex flex-column flex-md-row align-items-center justify-content-between"
                     style={{ borderBottom: "2px dashed #5cb338" }}
                   >
+                    <FavIcon
+                      handleFavorite={handleFavorite}
+                      isFavRec={isFavRec}
+                      recipeSelected={recipeSelected}
+                    />
                     <div
                       className="col-4 rounded-circle overflow-hidden"
                       style={{
@@ -62,36 +113,45 @@ const RecipeDetails = () => {
                         className="img-fluid"
                       />
                     </div>
-                    <div className="col-8 d-flex justify-content-center align-items-center flex-column">
-                      <h5
-                        className="p-1 rounded-pill text-center bg-green text-capitalize p-1 px-4"
-                        style={{ width: "fit-content" }}
-                      >
-                        ingredient
-                      </h5>
-                      <ul className="row p-0">
-                        {recipeSelected.ingredientLines.map((ingre, index) => {
-                          return (
-                            <li
-                              className="d-flex text-green text-capitalize"
-                              style={{
-                                width: "fit-content",
-                                fontWeight: "600",
-                              }}
-                              key={index}
-                            >
-                              <i className="bi bi-check2-circle mx-1"></i>
-                              {ingre}
-                            </li>
-                          );
-                        })}
-                      </ul>
+                    <div className="col d-flex flex-column justify-content-center ">
+                      <span className="text-green">
+                        Dish Type : {recipeSelected.dishType}
+                      </span>
+                      <span className="text-green">
+                        Cuisine Type : {recipeSelected.cuisineType}
+                      </span>
+                      <span className="text-green">
+                        Calories:
+                        {Math.round(parseFloat(recipeSelected.calories) * 100) /
+                          100}
+                      </span>
                     </div>
                   </div>
-                  <div className="col-12">
-                    <span>{recipeSelected.dishType}</span>
-                    <span>{recipeSelected.dishType}</span>
-                    <span>{recipeSelected.dishType}</span>
+
+                  <div className="col-12 d-flex justify-content-center align-items-center flex-column my-2 ">
+                    <h5
+                      className="p-1 rounded-pill text-center bg-green text-capitalize p-1 px-4"
+                      style={{ width: "fit-content" }}
+                    >
+                      ingredient
+                    </h5>
+
+                    <div className="my-2 p-0 w-100">
+                      {recipeSelected.ingredientLines.map((ingre, index) => {
+                        return (
+                          <span
+                            className="text-green mx-1 text-capitalize"
+                            style={{
+                              fontWeight: "700",
+                            }}
+                            key={index}
+                          >
+                            <i className="bi bi-check2-circle mx-1 "></i>
+                            {ingre}
+                          </span>
+                        );
+                      })}
+                    </div>
                   </div>
                 </div>
                 <div className="col-12">
@@ -114,7 +174,7 @@ const IngreList = (props) => {
 
   return (
     <ul
-      className="row p-1 justify-content-center"
+      className="row p-1 justify-content-center m-0"
       style={{ listStyle: "none" }}
     >
       {list.map((label, index) => {
@@ -124,7 +184,6 @@ const IngreList = (props) => {
             style={{ width: "fit-content", fontWeight: "600" }}
             key={index}
           >
-            {/* <i className="bi bi-dot"></i> */}
             {label}
           </li>
         );
@@ -133,4 +192,27 @@ const IngreList = (props) => {
   );
 };
 
+const FavIcon = (props) => {
+  const { isFavRec, handleFavorite, recipeSelected } = props;
+  return (
+    <div
+      className="card-favIcon"
+      style={
+        {
+          // position: "absolute",
+          // top: "5%",
+          // right: "5%",
+          // transform: "translate(-5%,-5%",
+        }
+      }
+      onClick={() => handleFavorite(recipeSelected)}
+    >
+      {isFavRec === true ? (
+        <i className="bi bi-heart-fill text-green"></i>
+      ) : (
+        <i className="bi bi-heart text-green"></i>
+      )}
+    </div>
+  );
+};
 export default RecipeDetails;
