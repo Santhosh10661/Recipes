@@ -26,6 +26,8 @@ const RecipeDetails = () => {
 
     const itsFav = favorites.favRec.filter((fav) => id === fav);
     setIsFavRec(itsFav.length > 0 ? true : false);
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleFavorite = (favRec) => {

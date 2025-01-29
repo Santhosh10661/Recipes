@@ -3,9 +3,7 @@ import { NavLink, Route, Routes } from "react-router-dom";
 import BreakfastList from "./BreakfastList";
 import LunchList from "./LunchList";
 import DinnerList from "./DinnerList";
-// import RecipeDetails from "./RecipeDetails";
 import Favorites from "./Favorites";
-// import { useSelector } from "react-redux";
 
 const Recipes = () => {
   return (
@@ -39,7 +37,6 @@ const Recipes = () => {
         <Route path="/breakfastlist" element={<BreakfastList />} />
         <Route path="/lunchlist" element={<LunchList />} />
         <Route path="/dinnerlist" element={<DinnerList />} />
-        {/* <Route path="/:id" element={<RecipeDetails />} /> */}
         <Route path="/favorites" element={<Favorites />} />
       </Routes>
     </section>

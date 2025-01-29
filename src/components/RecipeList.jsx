@@ -4,7 +4,6 @@ import SearchBar from "./SearchBar";
 
 const RecipeList = (props) => {
   const { recipeType, title } = props;
-
   const [searchedItem, setSearchedItem] = useState([]);
   const [query, setQuery] = useState("");
   const [itemNotFound, setItemNotFound] = useState(false);
@@ -68,11 +67,7 @@ const RecipeList = (props) => {
                     <RecipeCard key={recipe.recipe_id} recipe={recipe} />
                   ))
                 : recipeType.map((recipe, index) => (
-                    <RecipeCard
-                      key={recipe.recipe_id}
-                      recipe={recipe}
-                      index={index}
-                    />
+                    <RecipeCard key={recipe.recipe_id} recipe={recipe} />
                   ))}
             </>
           )}

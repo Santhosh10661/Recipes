@@ -12,8 +12,8 @@ const Favorites = () => {
       .flat()
       .filter((rec) => favorites.favRec.includes(rec.recipe_id));
 
-    console.log("...", favItemsList);
     setFavList(favItemsList);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
     <div className="favorites row">
@@ -22,24 +22,12 @@ const Favorites = () => {
       {favList.length > 0 ? (
         <>
           {favList.map((fav, index) => {
-            return (
-              <RecipeCard key={fav.recipe_id} recipe={fav} index={index} />
-            );
+            return <RecipeCard key={fav.recipe_id} recipe={fav} />;
           })}
         </>
       ) : (
         <p>No favorites added yet!</p>
       )}
-      {/* {favList.length > 0 ? (
-        favList.map((fav) => (
-          <div className="favorite-card" key={fav.recipe_id}>
-            <img src={fav.image} alt={fav.label} />
-            <p>{fav.label}</p>
-          </div>
-        ))
-      ) : (
-        <p>No favorites added yet!</p>
-      )} */}
     </div>
   );
 };
