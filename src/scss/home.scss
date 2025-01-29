@@ -1,0 +1,30 @@
+@import "./homeherosec.scss"; //home screen banner style
+
+.recTypeHeading {
+  font-weight: 700;
+  background-color: #5cb338;
+  color: #fbfffb;
+  height: fit-content;
+  border-radius: 0px 0px 10px 10px;
+}
+
+.category {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  cursor: pointer;
+
+  .cataHeading {
+    font-weight: 600;
+    border: 3px dashed #5cb338;
+    color: #5cb338;
+    transition: 0.3s ease;
+  }
+}
+.category:hover {
+  h3 {
+    color: #fbfffb;
+    background-color: #5cb338;
+  }
+}

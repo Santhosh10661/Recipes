@@ -1,0 +1,183 @@
+.bannerLeft {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .bannerCon {
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+
+    .text-delicious {
+      margin-left: 10px;
+      width: fit-content;
+      font-size: 60px;
+      font-weight: 700;
+      color: #5cb338;
+      border-bottom: 5px solid #5cb338;
+      transform: rotate(-17deg);
+    }
+    .text-recipe {
+      font-size: 100px;
+      font-weight: 700;
+      background-color: #5cb338;
+      color: #fbfffb;
+      width: fit-content;
+    }
+    .text-hub {
+      width: fit-content;
+      font-size: 60px;
+      font-weight: 700;
+      color: #5cb338;
+      align-self: flex-end;
+      border-top: 5px solid #5cb338;
+      transform: rotate(17deg);
+    }
+  }
+}
+.bannerRight {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: translate(20%, 0%) scale(1.3) rotate(30deg);
+  background-color: #5cb338;
+
+  .text {
+    position: absolute;
+    font-weight: 700;
+    font-size: 18px;
+    text-transform: uppercase;
+    color: #fbfffb;
+  }
+  .text1 {
+    bottom: 11%;
+    left: 2%;
+    transform: translate(-50%, -50%) rotate(-90deg);
+    border-bottom: 2px dashed #fbfffb;
+  }
+  .text2 {
+    bottom: -2%;
+    left: 17%;
+    transform: translate(-50%, -50%) rotate(0deg);
+    border-top: 2px dashed #fbfffb;
+  }
+
+  .br-con {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 300px;
+    height: 300px;
+    overflow: hidden;
+    background-color: #fbfffb;
+    transform: rotate(-30deg);
+
+    span {
+      position: absolute;
+      bottom: 0%;
+      left: 50%;
+      transform: translate(-50%, 0%);
+      width: 250px;
+      height: 250px;
+      background-color: #5cb338;
+      z-index: -1;
+    }
+    img {
+      position: absolute;
+      bottom: 15%;
+      left: 50%;
+      transform: translate(-50%, 0%) scale(1.5);
+    }
+  }
+}
+
+//
+.homeBanner-small-screen {
+  background-color: #5cb338;
+  .bannerCon {
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translate(-50%, -10%);
+
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+
+    .text-delicious {
+      margin-left: 10px;
+      width: fit-content;
+      font-size: 60px;
+      font-weight: 700;
+      color: #fbfffb;
+      border-bottom: 5px solid #fbfffb;
+      transform: rotate(-17deg);
+    }
+    .text-recipe {
+      font-size: 100px;
+      font-weight: 700;
+      background-color: #fbfffb;
+      color: #5cb338;
+      width: fit-content;
+    }
+    .text-hub {
+      width: fit-content;
+      font-size: 60px;
+      font-weight: 700;
+      color: #fbfffb;
+      align-self: flex-end;
+      border-top: 5px solid #fbfffb;
+      transform: rotate(17deg);
+    }
+  }
+
+  .bannerQuotes {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    .text {
+      font-weight: 700;
+
+      text-transform: uppercase;
+      color: #fbfffb;
+    }
+    .line {
+      width: 100%;
+      border-bottom: 5px dashed #fbfffb;
+    }
+  }
+  .brImgCon {
+    position: absolute;
+    bottom: 0%;
+    left: 50%;
+    transform: translate(-50%, 0%);
+
+    .br-con {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 300px;
+      height: 300px;
+      overflow: hidden;
+      background-color: #fbfffb;
+
+      span {
+        position: absolute;
+        bottom: 0%;
+        left: 50%;
+        transform: translate(-50%, 0%);
+        width: 250px;
+        height: 250px;
+        background-color: #5cb338;
+      }
+      img {
+        transform: scale(1.5);
+        z-index: 2;
+      }
+    }
+  }
+}

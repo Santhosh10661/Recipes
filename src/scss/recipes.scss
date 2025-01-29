@@ -1,0 +1,28 @@
+.recipesNav {
+  position: sticky;
+  top: 0%;
+  left: 0%;
+  z-index: 5;
+  color: #ffffec;
+  background-color: #5cb338;
+  a {
+    position: relative;
+    color: #ffffec;
+    text-decoration: none;
+    text-transform: capitalize;
+    font-weight: 600;
+    padding: 2px;
+  }
+
+  .active::before {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    border-radius: 20px;
+    width: 20px;
+    height: 2px;
+    background-color: #ffffec;
+  }
+}

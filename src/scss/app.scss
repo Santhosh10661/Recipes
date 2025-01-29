@@ -1,0 +1,26 @@
+@import "./home.scss";
+@import "./recipes.scss";
+@import "./searchbar.scss";
+@import "./recipeslist.scss";
+@import "./recipedetails.scss";
+@import "./recipecard.scss";
+@import "./favorites.scss";
+
+.app {
+  background-color: #fbfffb;
+  //   background-color: #e8f9ff;
+}
+.text-green {
+  color: #5cb338;
+  // list-style:;
+}
+.bg-lightGreen {
+  background-color: #fbfffb;
+}
+.bg-green {
+  color: #fbfffb;
+  background-color: #5cb338;
+}
+i {
+  cursor: pointer;
+}

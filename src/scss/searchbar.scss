@@ -1,0 +1,12 @@
+.searchbarCon {
+  .searchbar {
+    border: 2px solid #5cb338;
+    font-weight: 600;
+    color: #5cb338;
+    outline: none;
+    caret-color: #5cb338;
+  }
+  .searchbar::placeholder {
+    color: #7eb169;
+  }
+}

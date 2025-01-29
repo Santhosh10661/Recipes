@@ -1,0 +1,12 @@
+.recDetCon {
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  min-height: 100dvh;
+  z-index: 10;
+  background-color: rgba(255, 255, 236, 0.5);
+  backdrop-filter: blur(3px); /* Blur effect */
+}
+.recipeDetails {
+  background-color: #5cb338;
+}
