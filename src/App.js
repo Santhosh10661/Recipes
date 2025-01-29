@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import Home from "./components/Home";
 import Recipes from "./components/Recipes";
-import Footer from "./components/Footer";
+// import Footer from "./components/Footer";
 import { FetchRecipes } from "./components/FetchRecipes";
 import { setRecipes } from "./redux/silces/recipesReducer";
 import { setFavorites } from "./redux/silces/favoritesReducer";
@@ -44,7 +44,7 @@ const App = () => {
               <Route path="/" element={<Home />} />
               <Route path="/recipes/*" element={<Recipes />} />
             </Routes>
-            <Footer />
+            {/* <Footer /> */}
           </>
         ) : (
           <h1>loading....</h1>
