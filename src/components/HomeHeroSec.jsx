@@ -18,14 +18,6 @@ const HomeHeroSec = () => {
               <h1 className="mb-3 text-uppercase text-hub">Hub</h1>
             </div>
 
-            {/* <div className="col-12 bannerQuotes ">
-              <h1 className="text text1 mx-2">Cook with love</h1>
-              <div className="line"></div>
-              <h1 className="text text2 mt-2 mx-2 text-end">
-                serve with passion
-              </h1>
-            </div> */}
-
             <div className="brImgCon">
               <div className="br-con rounded-circle">
                 <span className="green-circle rounded-circle shadow"></span>

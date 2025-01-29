@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { setFavorites } from "../redux/silces/favoritesReducer";
+import React from "react";
+import { useDispatch } from "react-redux";
 import { setShowRecipe } from "../redux/silces/showRecipeReducer";
 
 const RecipeCard = (props) => {
-  const { recipe, index } = props;
+  const { recipe } = props;
 
   const dispatch = useDispatch();
 
