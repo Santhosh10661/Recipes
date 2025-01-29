@@ -28,7 +28,9 @@ const Recipes = () => {
             <NavLink to="/recipes/dinnerlist">dinner</NavLink>
           </li>
           <li>
-            <NavLink to="/recipes/favorites">fav</NavLink>
+            <NavLink to="/recipes/favorites">
+              <i className="bi bi-bookmark-heart-fill"></i>
+            </NavLink>
           </li>
         </ul>
       </nav>

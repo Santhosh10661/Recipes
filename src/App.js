@@ -7,6 +7,7 @@ import { FetchRecipes } from "./components/FetchRecipes";
 import { setRecipes } from "./redux/silces/recipesReducer";
 import { setFavorites } from "./redux/silces/favoritesReducer";
 import RecipeDetails from "./components/RecipeDetails";
+import Loading from "./components/Loading";
 
 const App = () => {
   const showRecipe = useSelector((state) => state.showRecipe.showRecipe);
@@ -44,7 +45,7 @@ const App = () => {
             </Routes>
           </>
         ) : (
-          <h1>loading....</h1>
+          <Loading />
         )}
 
         {showRecipe.itsShow && <RecipeDetails />}

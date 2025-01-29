@@ -14,7 +14,7 @@ const Favorites = () => {
 
     setFavList(favItemsList);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [favorites]);
   return (
     <div className="favorites row">
       <h2 className="col-12">Your Favorites</h2>
