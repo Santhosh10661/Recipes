@@ -40,7 +40,6 @@ export const FetchRecipes = async (loadingis, setLoadingIs, dispatch) => {
       dinner: recipes_D,
     };
     sessionStorage.setItem("recipes", JSON.stringify(res));
-    console.log("stored to storage");
     dispatch(setRecipes(res));
     setLoadingIs(false);
   } catch (error) {
