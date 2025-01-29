@@ -92,7 +92,10 @@ const RecipeDetails = () => {
                 <div className="col-12 d-flex flex-column bg-lightGreen p-2 rounded my-4 mx-1">
                   <div
                     className="col-12 d-flex flex-column flex-md-row align-items-center justify-content-between"
-                    style={{ borderBottom: "2px dashed #5cb338" }}
+                    style={{
+                      position: "relative",
+                      borderBottom: "2px dashed #5cb338",
+                    }}
                   >
                     <FavIcon
                       handleFavorite={handleFavorite}
@@ -113,14 +116,14 @@ const RecipeDetails = () => {
                         className="img-fluid"
                       />
                     </div>
-                    <div className="col d-flex flex-column justify-content-center ">
-                      <span className="text-green">
+                    <div className="col d-flex flex-column justify-content-center recDetPoint ">
+                      <span className="point">
                         Dish Type : {recipeSelected.dishType}
                       </span>
-                      <span className="text-green">
+                      <span className="point">
                         Cuisine Type : {recipeSelected.cuisineType}
                       </span>
-                      <span className="text-green">
+                      <span className="point">
                         Calories:
                         {Math.round(parseFloat(recipeSelected.calories) * 100) /
                           100}
@@ -197,14 +200,12 @@ const FavIcon = (props) => {
   return (
     <div
       className="card-favIcon"
-      style={
-        {
-          // position: "absolute",
-          // top: "5%",
-          // right: "5%",
-          // transform: "translate(-5%,-5%",
-        }
-      }
+      style={{
+        position: "absolute",
+        top: "0%",
+        right: "0%",
+        transform: "translate(-5%,-5%",
+      }}
       onClick={() => handleFavorite(recipeSelected)}
     >
       {isFavRec === true ? (
