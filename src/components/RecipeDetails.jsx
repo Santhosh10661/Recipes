@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setShowRecipe } from "../redux/silces/showRecipeReducer";
 import { setFavorites } from "../redux/silces/favoritesReducer";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 const RecipeDetails = () => {
   const id = useSelector((state) => state.showRecipe.showRecipe.id);
@@ -93,17 +94,25 @@ const RecipeDetails = () => {
                 </h3>
                 <div className="col-12 d-flex flex-column bg-lightGreen p-2 rounded my-4 mx-1">
                   <div
-                    className="col-12 d-flex flex-column flex-md-row align-items-center justify-content-between"
-                    style={{
-                      position: "relative",
-                      borderBottom: "2px dashed #5cb338",
-                    }}
+                    className="col-12 d-flex justify-content-between align-items-center"
+                    style={{ borderBottom: "2px dashed #5cb338" }}
                   >
+                    <h3 className="text-green" style={{ width: "fit-content" }}>
+                      Recipe Details
+                    </h3>
                     <FavIcon
                       handleFavorite={handleFavorite}
                       isFavRec={isFavRec}
                       recipeSelected={recipeSelected}
                     />
+                  </div>
+                  <div
+                    className="col-12 d-flex align-items-center justify-content-between"
+                    style={{
+                      position: "relative",
+                      borderBottom: "2px dashed #5cb338",
+                    }}
+                  >
                     <div
                       className="col-4 rounded-circle overflow-hidden"
                       style={{
@@ -112,30 +121,35 @@ const RecipeDetails = () => {
                         transform: "scale(0.8)",
                       }}
                     >
-                      <img
+                      <LazyLoadImage
                         src={recipeSelected.image}
                         alt=""
                         className="img-fluid"
+                        effect="blur"
                       />
                     </div>
-                    <div className="col d-flex flex-column justify-content-center recDetPoint ">
-                      <span className="point">
-                        Dish Type : {recipeSelected.dishType}
-                      </span>
-                      <span className="point">
-                        Cuisine Type : {recipeSelected.cuisineType}
-                      </span>
-                      <span className="point">
-                        Calories:
-                        {Math.round(parseFloat(recipeSelected.calories) * 100) /
-                          100}
-                      </span>
+
+                    <div className="col d-flex justify-content-center align-items-center recDetPoint">
+                      <div className="d-flex flex-column">
+                        <span className="point">
+                          Dish Type : {recipeSelected.dishType}
+                        </span>
+                        <span className="point">
+                          Cuisine Type : {recipeSelected.cuisineType}
+                        </span>
+                        <span className="point">
+                          Calories:
+                          {Math.round(
+                            parseFloat(recipeSelected.calories) * 100
+                          ) / 100}
+                        </span>
+                      </div>
                     </div>
                   </div>
 
                   <div className="col-12 d-flex justify-content-center align-items-center flex-column my-2 ">
                     <h5
-                      className="p-1 rounded-pill text-center bg-green text-capitalize p-1 px-4"
+                      className="p-1 rounded text-center bg-green text-capitalize p-1 px-4"
                       style={{ width: "fit-content" }}
                     >
                       ingredient
@@ -203,10 +217,11 @@ const FavIcon = (props) => {
     <div
       className="card-favIcon"
       style={{
-        position: "absolute",
-        top: "0%",
-        right: "0%",
-        transform: "translate(-5%,-5%",
+        width: "fit-content",
+        // position: "absolute",
+        // top: "0%",
+        // right: "0%",
+        // transform: "translate(-5%,-5%)",
       }}
       onClick={() => handleFavorite(recipeSelected)}
     >

@@ -1,6 +1,10 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { setShowRecipe } from "../redux/silces/showRecipeReducer";
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import "react-lazy-load-image-component/src/effects/blur.css";
+import "react-lazy-load-image-component/src/effects/opacity.css";
+import "react-lazy-load-image-component/src/effects/black-and-white.css";
 
 const RecipeCard = (props) => {
   const { recipe } = props;
@@ -20,7 +24,7 @@ const RecipeCard = (props) => {
     >
       <div className="col-12 d-flex flex-row flex-md-column justify-content-around align-items-center mb-4">
         <div className="rc-img-con rounded-circle m-2">
-          <img src={recipe.image} alt={recipe.label} />
+          <LazyLoadImage src={recipe.image} alt={recipe.label} effect="blur" />
         </div>
         <h6
           className="text-center col-7 col-md-12 text-truncate rounded-pill p-2 m-0 mb-md-1"
