@@ -5,6 +5,8 @@ import breakfast from "../Assets/breakfastImg.jpg";
 import lunchImg from "../Assets/lunchImg.jpg";
 import dinnerImg from "../Assets/dinnerImg.jpg";
 import Footer from "./Footer";
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import "react-lazy-load-image-component/src/effects/blur.css";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -66,7 +68,12 @@ const Home = () => {
                     className="rounded-circle overflow-hidden"
                     style={{ width: "150px", height: "150px" }}
                   >
-                    <img src={rec.img} alt="" style={{ width: "100%" }} />
+                    <LazyLoadImage
+                      src={rec.img}
+                      alt=""
+                      style={{ width: "100%" }}
+                      effect="blur"
+                    />
                   </div>
                 </div>
                 <p
