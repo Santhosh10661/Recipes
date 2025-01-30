@@ -16,17 +16,23 @@ const Favorites = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [favorites]);
   return (
-    <div className="favorites row">
-      <h2 className="col-12">Your Favorites</h2>
-
+    <div className="favorites row" style={{ minHeight: "100dvh" }}>
       {favList.length > 0 ? (
-        <>
-          {favList.map((fav, index) => {
-            return <RecipeCard key={fav.recipe_id} recipe={fav} />;
-          })}
-        </>
+        <div className="col-12">
+          <h2 className="col-12" style={{ height: "fit-content" }}>
+            Your Favorites
+          </h2>
+          <div className="row justify-content-evenly">
+            {favList.map((fav) => {
+              return <RecipeCard key={fav.recipe_id} recipe={fav} />;
+            })}
+          </div>
+        </div>
       ) : (
-        <p>No favorites added yet!</p>
+        <div className="noFav">
+          <i class="bi bi-heartbreak"></i>
+          <p>No favorites added yet!</p>
+        </div>
       )}
     </div>
   );

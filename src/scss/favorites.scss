@@ -1,0 +1,14 @@
+.noFav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-size: 40px;
+  color: #5cb338;
+  filter: opacity(0.5);
+  font-weight: 600;
+  text-transform: capitalize;
+  i {
+    font-size: 60px;
+  }
+}
