@@ -7,6 +7,7 @@ import dinnerImg from "../Assets/dinnerImg.jpg";
 import Footer from "./Footer";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/blur.css";
+import introVideo from "../Assets/recipe intro.mp4";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -55,13 +56,12 @@ const Home = () => {
                 className={`col-10 col-md-5 col-lg-3 my-4 category p-2 py-4 rounded shadow`}
                 key={index}
                 onClick={() => handleClick(rec.nav)}
-                style={{ border: "3px dashed #5cb338" }}
               >
                 <h3 className="text-capitalize py-2 px-4 rounded-pill cataHeading">
                   {rec.title}
                 </h3>
                 <div
-                  className="p-2 my-2 shadow-lg rounded-circle "
+                  className="cataImgCon my-2 shadow-lg rounded-circle "
                   style={{ backgroundColor: "#5cb338" }}
                 >
                   <div
@@ -86,21 +86,35 @@ const Home = () => {
             );
           })}
         </div>
-        <p
-          className="text-center p-4 m-0 rounded"
-          style={{
-            fontWeight: "600",
-            backgroundColor: "#5cb338",
-            color: "#fbfffb",
-          }}
-        >
-          Recipes are instructions for preparing a dish, including a list of
-          ingredients and a set of steps to follow. They guide you through the
-          cooking process, helping to create meals that can range from simple
-          snacks to elaborate gourmet dishes. Recipes often include cooking
-          techniques, preparation time, and serving suggestions to ensure the
-          dish turns out as expected.
-        </p>
+
+        <div className="row justify-content-center align-items-center py-2">
+          <p
+            className="text-center p-4 m-0 rounded text-green col-12 col-xl-8"
+            style={{
+              fontWeight: "600",
+            }}
+          >
+            Recipes are instructions for preparing a dish, including a list of
+            ingredients and a set of steps to follow. They guide you through the
+            cooking process, helping to create meals that can range from simple
+            snacks to elaborate gourmet dishes. Recipes often include cooking
+            techniques, preparation time, and serving suggestions to ensure the
+            dish turns out as expected.
+          </p>
+          <div className="col-12 d-flex justify-content-center align-items-center">
+            <video
+              src={introVideo}
+              className="img-fluid rounded col-12 col-md-8 col-lg-6"
+              style={{ maxHeight: "300px", objectFit: "cover" }}
+              autoPlay
+              loop
+              muted
+            >
+              Your browser does not support the video tag. Please update your
+              browser or try a different one.
+            </video>
+          </div>
+        </div>
       </section>
       <Footer />
     </>
