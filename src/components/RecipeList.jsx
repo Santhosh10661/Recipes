@@ -59,7 +59,10 @@ const RecipeList = (props) => {
           }}
         >
           {itemNotFound === true ? (
-            <h1>not found</h1>
+            <div className="recipeNotFount">
+              <i className="bi bi-card-text"></i>
+              <p>Recipe Not Available</p>
+            </div>
           ) : (
             <>
               {searchedItem.length !== 0

@@ -30,7 +30,7 @@ const Favorites = () => {
         </div>
       ) : (
         <div className="noFav">
-          <i class="bi bi-heartbreak"></i>
+          <i className="bi bi-heartbreak"></i>
           <p>No favorites added yet!</p>
         </div>
       )}
