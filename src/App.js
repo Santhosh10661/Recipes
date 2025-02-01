@@ -8,6 +8,7 @@ import { setRecipes } from "./redux/silces/recipesReducer";
 import { setFavorites } from "./redux/silces/favoritesReducer";
 import RecipeDetails from "./components/RecipeDetails";
 import Loading from "./components/Loading";
+import Footer from "./components/Footer";
 
 const App = () => {
   const showRecipe = useSelector((state) => state.showRecipe.showRecipe);
@@ -43,6 +44,7 @@ const App = () => {
               <Route path="/" element={<Home />} />
               <Route path="/recipes/*" element={<Recipes />} />
             </Routes>
+            <Footer />
           </>
         ) : (
           <Loading />
