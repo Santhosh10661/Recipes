@@ -27,12 +27,13 @@ const Recipes = () => {
           <li>
             <NavLink to="/recipes/dinnerlist">dinner</NavLink>
           </li>
-          <li>
-            <NavLink to="/recipes/favorites">
-              <i className="bi bi-bookmark-heart-fill"></i>
-            </NavLink>
-          </li>
         </ul>
+        <div style={{ width: "fit-content" }}>
+          <NavLink to="/recipes/favorites">
+            {/* <i className="bi bi-bookmark-heart-fill"></i> */}
+            <i className="bi bi-balloon-heart-fill fs-5"></i>
+          </NavLink>
+        </div>
       </nav>
 
       <Routes>

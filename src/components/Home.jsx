@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import breakfast from "../Assets/breakfastImg.jpg";
 import lunchImg from "../Assets/lunchImg.jpg";
 import dinnerImg from "../Assets/dinnerImg.jpg";
-import Footer from "./Footer";
+// import Footer from "./Footer";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/blur.css";
 import introVideo from "../Assets/recipe intro.mp4";
@@ -116,7 +116,7 @@ const Home = () => {
           </div>
         </div>
       </section>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 };
